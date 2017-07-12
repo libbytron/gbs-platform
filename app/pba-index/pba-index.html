@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <navbar></navbar>
+</head>
+
+<body>
+    <main role="main">
+        <div class="em-l-container">
+            <div class="em-c-page-header ">
+                <!--<h1 class="em-c-page-header__title">PBA </h1>-->
+                <p class="em-c-page-header__desc">Select a PBA to view the Gas Balancing Statement.</p>
+                <md-input-container>
+                          <md-icon class="material-icons">&#xE8B6;</md-icon>
+                          <label>Search PBA </label>
+                          <input type="text" ng-model="searchKey" ng-keydown="search($event)" class="text-area">
+                </md-input-container>
+            </div>
+            <!-- end em-c-page-header -->
+            <div class="pba-table-block">
+                <div class="em-c-table-object ">
+                    <div class="em-c-table-object__header">
+                    </div>
+                    <!--end em-c-table-object__header-->
+                    <div class="em-c-table-object__body" style="height:500px;overflow:auto;">
+                        <div class="em-c-table-object__body-inner">
+                            <table class="em-c-table ">
+                                <thead class="em-c-table__header">
+                                    <tr class="em-c-table__header-row">
+                                        <th scope="col" class="em-c-table__header-cell ">PBA NO.</th>
+                                    </tr>
+                                    <!-- <em-c-></em-c->table__header-row -->
+                                </thead>
+                                <!-- end em-c-table__header -->
+                                <tbody>
+                                    <tr ng-repeat="pba in pbaList" class="em-c-table__row ">
+                                        <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:pba.id, pbaName:pba.name })">
+                                            {{pba.id}}  {{pba.name}}
+                                        </td>
+                                    </tr>
+                                    <!-- end em-c-table__row -->
+                                </tbody>
+                                <!-- end em-c-table__body -->
+                                <tfoot class="em-c-table__footer">
+                                    <tr class="em-c-table__footer-row">
+                                    </tr>
+                                </tfoot>
+                                <!-- end em-c-table__footer -->
+                            </table>
+                            <!--end em-c-table-->
+                        </div>
+                        <!--end em-c-table-object__body-inner-->
+                    </div>
+                    <!--end em-c-table-object__body-->
+                </div>
+                <!--end em-c-table-object-->
+            </div>
+        </div>
+        <!-- end pba table em-l-container -->
+
+    </main>
+
+    <emfooter></emfooter>
+
+
+    <!-- Add unity JavaScript to bottom of body -->
+    <script type="text/javascript" src="/unity-1.1.1/js/em-unity-1.1.1.min.js"></script>
+
+</body>
+
+</html>

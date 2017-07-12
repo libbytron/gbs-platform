@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+  <!-- Include External Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
+
+  <!-- Include External Styles -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" /> <!-- icons -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"> <!-- font -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- more icons -->
+
+  <!-- Angular Aria Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+
+  <!-- Angular Animate Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <!-- Include all your javascript here. Also include the module before the controller -->
+  <script src="app.module.js"></script>
+  <script src="app.route.js"></script>
+
+  <!-- Components -->
+  <script src="navagation-bar/navagation-bar.component.js"></script>
+  <script src="footer/footer.component.js"></script>
+
+  <!-- Controllers -->
+  <script src="test/test.controller.js"></script>
+  <script src="pba-index/pba-index.controller.js"></script>
+  <script src="owner-index/owner-index.controller.js"></script>
+  <script src="blockchain/blockchain.controller.js"></script>
+  <script src="owner-detail/owner-detail.controller.js"></script>
+  <script src="pba-detail/pba-detail.controller.js"></script>
+  <script src="navagation-bar/navagation-bar.controller.js"></script>
+  <script src="footer/footer.controller.js"></script>
+  
+  <!-- Services -->
+  <script src="services/survey.service.js"></script>
+  <script src="services/blockchain.service.js"></script>
+  <script src="services/elasticsearch.service.js"></script>
+
+  <!-- Form Validation Directives -->
+  <!-- EXAMPLE: <script src="validators/contain-uppercase.js"></script> -->
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" type="text/css" href="/app.css">
+
+</head>
+
+<body>
+
+  <toolbar></toolbar>
+
+  <div id="main">
+    <div ui-view>
+    
+    <center>
+    
+    <h1>Tell me about yourself!</h1>
+    
+    <md-button class="md-raised" ui-sref="test" md-theme="default">
+       Info Form
+    </md-button>
+
+    <md-button class="md-raised" ui-sref="blockchain" md-theme="default">
+       Blockchain
+    </md-button>
+
+    <md-button class="md-raised" ui-sref="pba-index" md-theme="default">
+       PBA Index
+    </md-button>
+
+    <md-button class="md-raised" ui-sref="owner-index" md-theme="default">
+       Owner Index
+    </md-button>
+    
+    </center>
+    
+    </div>
+  </div>
+
+</body>
+
+</html>

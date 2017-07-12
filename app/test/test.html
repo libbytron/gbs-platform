@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+      <navbar></navbar>
+      <div ng-controller="testController">
+          <center>
+
+
+            <md-card class = "big-card">
+                  <center>
+                  <h1>About Me</h1>
+
+
+                  <md-card class="row-card">
+                    <form name="nameform">
+                      <md-input-container>
+                          <label>What is your name? </label>
+                          <textarea ng-model="name"></textarea>
+                      </md-input-container>
+                    </form>
+
+                    <div>Your name is: {{name}}</div>
+                    
+                    
+                  </md-card>
+
+
+
+                  <md-card class="row-card">
+                    <div>
+                      <br>
+                      Select your favorite language:  
+                      <br>
+                        <md-button ng-click="php()" class="md-raised" md-theme="default">PHP</md-button>
+                        <md-button ng-click="javascript()" class="md-raised" md-theme="default">JavaScript</md-button>
+                        <br>
+                        <md-button ng-click="cpp()" class="md-raised" md-theme="default">C++</md-button>
+                        <md-button ng-click="java()" class="md-raised" md-theme="default">Java</md-button>
+
+                      <p> You have selected: {{ myFavLanguage }} </p>
+                    </div>
+                  </md-card>
+
+                  <md-button ng-click="submit()" class="md-raised" md-theme="default">
+                    Submit Form
+                  </md-button>
+
+                  <br><br>
+                  
+                  </center>
+                  
+
+             </md-card>
+
+              <md-button class="md-raised" ui-sref="home" md-theme="default">
+                  BACK
+              </md-button>
+              <md-button ng-click="addContact()" class="md-raised" md-theme="default">
+                    Add a contact...
+              </md-button>
+              <md-button ng-click="getAllContacts()" class="md-raised" md-theme="default">
+                    Get All Contacts
+              </md-button>
+              <md-button ng-click="addAddress()" class="md-raised" md-theme="default">
+                    Add Addresses
+              </md-button>
+              <md-button ng-click="getAllAddresses()" class="md-raised" md-theme="default">
+                    Get Addresses
+              </md-button>
+              <md-button ng-click="addCompany()" class="md-raised" md-theme="default">
+                    Add Companies
+              </md-button>
+              <md-button ng-click="getAllCompanies()" class="md-raised" md-theme="default">
+                    Get Companies
+              </md-button>
+              <md-button ng-click="addPBA()" class="md-raised" md-theme="default">
+                    Add PBA
+              </md-button>
+              <md-button ng-click="getAllPBAs()" class="md-raised" md-theme="default">
+                    Get PBAs
+              </md-button>
+              <md-button ng-click="addContract()" class="md-raised" md-theme="default">
+                    Add Contract
+              </md-button>
+              <md-button ng-click="getAllContracts()" class="md-raised" md-theme="default">
+                    Get Contracts
+              </md-button>
+               <md-button ng-click="addGasCollection()" class="md-raised" md-theme="default">
+                    Add Gas Collections
+              </md-button>
+              <md-button ng-click="getAllGasCollections()" class="md-raised" md-theme="default">
+                    Get Gas Collections
+              </md-button>
+
+              <br><br>
+
+              <p ng-repeat="contact in contactList">
+                {{contact.name}}
+              </p>
+
+          </center>
+        </div>
+        <emfooter></emfooter>
+    </body>
+</html>

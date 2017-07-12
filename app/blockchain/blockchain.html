@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+
+  <toolbar></toolbar>
+
+  <div ng-controller="blockchainController">
+    <div ui-view>
+    
+    <center>
+    
+    <h1>Get a message from the blockchain ledger!</h1>
+    
+    <md-button ng-click="getMessage()" class="md-raised" md-theme="default">
+       Get the message!
+    </md-button>
+
+    <br>
+    The message is: {{blockchainMessage}}
+
+    
+    </center>
+
+    <br><br>
+
+    <center>
+        <md-button class="md-raised" ui-sref="home" md-theme="default">
+                  BACK
+        </md-button>
+    </center>
+    
+    </div>
+  </div>
+
+</body>
+
+</html>
