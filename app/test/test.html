@@ -2,60 +2,30 @@
 <html>
     <body>
 
-      <navbar></navbar>
       <div ng-controller="testController">
           <center>
 
-
-            <md-card class = "big-card">
-                  <center>
-                  <h1>About Me</h1>
-
-
-                  <md-card class="row-card">
                     <form name="nameform">
                       <md-input-container>
                           <label>What is your name? </label>
                           <textarea ng-model="name"></textarea>
                       </md-input-container>
                     </form>
-
-                    <div>Your name is: {{name}}</div>
-                    
-                    
-                  </md-card>
-
-
-
-                  <md-card class="row-card">
-                    <div>
-                      <br>
-                      Select your favorite language:  
-                      <br>
-                        <md-button ng-click="php()" class="md-raised" md-theme="default">PHP</md-button>
-                        <md-button ng-click="javascript()" class="md-raised" md-theme="default">JavaScript</md-button>
-                        <br>
-                        <md-button ng-click="cpp()" class="md-raised" md-theme="default">C++</md-button>
-                        <md-button ng-click="java()" class="md-raised" md-theme="default">Java</md-button>
-
-                      <p> You have selected: {{ myFavLanguage }} </p>
-                    </div>
-                  </md-card>
-
-                  <md-button ng-click="submit()" class="md-raised" md-theme="default">
-                    Submit Form
-                  </md-button>
-
-                  <br><br>
+                    <br>
                   
-                  </center>
-                  
-
-             </md-card>
 
               <md-button class="md-raised" ui-sref="home" md-theme="default">
                   BACK
               </md-button>
+
+              <br>
+              <br>
+              <br>
+
+              Elasticsearch Tests:
+              <br>
+              <br>
+              <br>
               <md-button ng-click="addContact()" class="md-raised" md-theme="default">
                     Add a contact...
               </md-button>
@@ -92,15 +62,78 @@
               <md-button ng-click="getAllGasCollections()" class="md-raised" md-theme="default">
                     Get Gas Collections
               </md-button>
+              <md-button ng-click="getCompanyIdFromContract()" class="md-raised" md-theme="default">
+                    Get Company Id From Contract
+              </md-button>
+              <md-button ng-click="getContractFromPbaAndCompany()" class="md-raised" md-theme="default">
+                    Get Contract from PBA and Company Name
+              </md-button>
 
+
+              <br><br><br>
+
+              Blockchain tests:
               <br><br>
 
-              <p ng-repeat="contact in contactList">
-                {{contact.name}}
-              </p>
+              <md-input-container>
+                  <label>Contract Id </label>
+                  <textarea ng-model="contractId"></textarea>
+              </md-input-container> {{contractId}}
+              <br>
+              <md-input-container>
+                  <label>Entitlement </label>
+                  <textarea ng-model="entitlement"></textarea>
+              </md-input-container> {{entitlement}}
+              <br>
+              <md-input-container>
+                  <label>Actual </label>
+                  <textarea ng-model="actual"></textarea>
+              </md-input-container> {{actual}}
+              <br>
+              <md-input-container>
+                  <label>Date </label>
+                  <textarea ng-model="date"></textarea>
+              </md-input-container> {{date}}
+              <br>
+              <md-input-container>
+                  <label>Previous Balance </label>
+                  <textarea ng-model="previousBalance"></textarea>
+              </md-input-container> {{previousBalance}}
+              <br><br>
+              <md-button ng-click="addAllocation()" class="md-raised" md-theme="default">
+                    Submit Allocation
+              </md-button>
+              <br><br>
+              <md-button ng-click="getAllocation()" class="md-raised" md-theme="default">
+                    Get Allocation
+              </md-button>
+
+              <br><br>
+              <md-input-container>
+                  <label>Company Id </label>
+                  <textarea ng-model="companyId"></textarea>
+              </md-input-container> {{companyId}}
+              <br>
+              <md-button ng-click="getBalance()" class="md-raised" md-theme="default">
+                    Get Balance
+              </md-button>
+
+              <br><br>
+              <md-input-container>
+                  <label>Company Id </label>
+                  <textarea ng-model="companyId"></textarea>
+              </md-input-container> {{companyId}}
+              <md-input-container>
+                  <label>Balance </label>
+                  <textarea ng-model="balance"></textarea>
+              </md-input-container> {{balance}}
+              <br>
+              <md-button ng-click="setBalance()" class="md-raised" md-theme="default">
+                    Set Balance
+              </md-button>
+
 
           </center>
         </div>
-        <emfooter></emfooter>
     </body>
 </html>

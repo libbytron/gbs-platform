@@ -1,0 +1,44 @@
+{
+  "contract_name": "CompanyBalance",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "companyId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getBalance",
+      "outputs": [
+        {
+          "name": "",
+          "type": "int256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "companyId",
+          "type": "uint256"
+        },
+        {
+          "name": "balance",
+          "type": "int256"
+        }
+      ],
+      "name": "changeBalance",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000c57fe5b5b60b88061001b6000396000f300606060405263ffffffff60e060020a6000350416631e0104398114602a578063738eb3d214604c575bfe5b3415603157fe5b603a6004356061565b60408051918252519081900360200190f35b3415605357fe5b605f6004356024356076565b005b6000818152602081905260409020545b919050565b60008281526020819052604090208190555b50505600a165627a7a72305820f1bdfefa09b2b87b690d16aa3eb09a9fc33c04c8fbfac3fa555d2624b232072c0029",
+  "networks": {},
+  "schema_version": "0.0.5",
+  "updated_at": 1500567724997
+}

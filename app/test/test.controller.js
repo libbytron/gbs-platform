@@ -2,56 +2,114 @@
     'use strict';
 
     angular.module('app')
-        .controller('testController', ['$scope', '$survey', '$elasticsearch',
-        function($scope, $survey, $elasticsearch){
+        .controller('testController', ['$scope', '$survey', '$elasticsearch', '$blockchain',
+        function($scope, $survey, $elasticsearch, $blockchain){
 
             // Language selection tools:
-            $scope.myFavLanguage = 'None';
             $scope.contactList = [];
+         
 
+
+            // BLOCKCHAIN:
+
+            // from the user (submit())
+            $scope.companyId;
+            $scope.pbaId;
+            $scope.entitlement;
+            $scope.actual;
+            $scope.date;
+
+            // need to create allocation (addAllocation())
+            $scope.contractId;
+            // $scope.entitlement
+            // $scope.actual
+            // $scope.date
+            $scope.previousBalance;
+
+            // need to get the NEW current balance from the allocation // goes to notify....
+            $scope.address;
+
+
+            $scope.balance;
+
+            // daniela and controller form
             this.$onInit = function() {
-                $scope.getAllContacts().then(
-                    function(hits){
-                        for(var i = 0; i < hits.length; i++)
-                        {
-                            $scope.contactList.push(hits[i]);
-                        }
+                $blockchain.subscribe(this);
+            }
+
+            this.notifyNewAllocation = function(allocationAddress){
+                $blockchain.getAllocation(allocationAddress)
+                    .then(function(allocation){
+                        console.log(allocation);
+                        // only controller form does this
+                        $blockchain.changeBalance(allocation.contractId, allocation.currentBalance);
+                    })
+            }
+
+            $scope.addAllocation = function(){
+               $blockchain.createAllocation(
+                    $scope.contractId, 
+                    $scope.entitlement, 
+                    $scope.actual, 
+                    $scope.date, 
+                    $scope.previousBalance
+                ).then(function(result){
+                    $scope.address = result;
+                    console.log($scope.address);
+                })
+            }
+
+            $scope.getAllocation = function(){
+                $blockchain.getAllocation($scope.address)
+                    .then(function(allocation){
+                        console.log(allocation);
+                    })
+            }
+
+            // extra
+
+            $scope.setABunchOfCompanyBalances = function(){
+                for(var i = 0; i <= 86; i++){
+                    $blockchain.changeBalance(i, 9000000);
+                }
+            }
+
+            $scope.getBalance = function(){
+                $blockchain.getBalance($scope.companyId);
+            }
+
+            $scope.setBalance = function(){
+                $blockchain.changeBalance($scope.companyId, $scope.balance);
+            }
+
+            // ELASTICSEARCH:
+            $scope.getContractFromPbaAndCompany= function(){
+                var companyName = "Blacksands Pacific";
+                var pbaId = "PAL006044";
+                $elasticsearch.getContractFromPbaAndCompany(companyName, pbaId).then(
+                    function(result){
+                        console.log(result);
                     }
                 )
             }
 
-            $scope.php = function(){
-                $scope.myFavLanguage = 'PHP';
-            };
 
-            $scope.javascript = function(){
-                $scope.myFavLanguage = 'JavaScript';
-            };
+            $scope.getCompanyIdFromContract = function(){
+                var contractId = 19;
+                $elasticsearch.getCompanyIdFromContract(contractId).then(
+                    function(result){
+                        console.log(result);
+                    }
+                )
+            }
 
-            $scope.cpp = function(){
-                $scope.myFavLanguage = 'C++';
-            };
-
-            $scope.java = function(){
-                $scope.myFavLanguage = 'Java';
-            };
-
-
-            
-
-            $scope.submit = function(){
-                console.log('Submitting a survey response...');
-
-                var surveyResponse = {
-                    name: $scope.name,
-                    favoriteLanguage: $scope.myFavLanguage
-                }
-
-
-                $survey.submitSurveyResponse(surveyResponse);
-
-                //$responseService.submitResponse(surveyResponse);
-                //.then() { $state.go ... }
+             $scope.getCompanyIdFromContract = function(){
+                var contractId = 19;
+                $elasticsearch.getCompanyIdFromContract(contractId).then(
+                    function(result){
+                        console.log(result);
+                    }
+                )
             }
 
             $scope.addContact = function(){
@@ -155,6 +213,19 @@
                             }
                      }
                  )
+            }
+
+            // random
+
+            $scope.submit = function(){
+                console.log('Submitting a survey response...');
+
+                var surveyResponse = {
+                    name: $scope.name,
+                }
+
+
+                $survey.submitSurveyResponse(surveyResponse);
             }
 
         }]);

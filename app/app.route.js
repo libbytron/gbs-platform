@@ -1,8 +1,13 @@
+import { default as Web3 } from 'web3';
+import { default as contract } from 'truffle-contract'; 
+import allocation_contracts from '../build/contracts/Allocation.json';
+import company_balance_contracts from '../build/contracts/CompanyBalance.json';
+
 (function() {
 
   'use strict';
 
-  angular.module('app', [
+  var app = angular.module('app', [
         'ui.router',
         'ngMaterial',
         'ngSanitize',
@@ -52,5 +57,14 @@
         });
 
     };
+
+    app.run(function($rootScope){
+        $rootScope.web3 = new Web3(new Web3.providers.HttpProvider("http://52.177.190.91:8545"));
+        $rootScope.AllocationContract = contract(allocation_contracts);
+        $rootScope.AllocationContract.setProvider($rootScope.web3.currentProvider);
+
+        $rootScope.CompanyBalanceContract = contract(company_balance_contracts);
+        $rootScope.CompanyBalanceContract.setProvider($rootScope.web3.currentProvider);
+    });
 
 })();

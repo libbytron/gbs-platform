@@ -30,6 +30,8 @@
             getContractsBelongingToCompany: getContractsBelongingToCompany,
             addGasCollection: addGasCollection,
             getAllGasCollections: getAllGasCollections,
+            getCompanyIdFromContract: getCompanyIdFromContract,
+            getContractFromPbaAndCompany: getContractFromPbaAndCompany
         };
 
         return exports;
@@ -213,6 +215,47 @@
             return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
                 function successCallback(response){
                     return convertHitsToSource(response.data.hits.hits);
+            });
+        }
+
+        function getCompanyIdFromContract(contractId){
+            var searchQuery = {
+                query: {
+                    match: {
+                        "id": contractId
+                    }
+                }
+            }
+            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+                function successCallback(response){
+                    var contract = response.data.hits.hits[0]._source;
+                    return contract.company.id;
+            });
+        }
+
+        function getContractFromPbaAndCompany(companyName, pbaId){
+            var searchQuery = {
+            "query" : {
+                    "bool": {
+                        "must": [
+                        {
+                            "match_phrase": {
+                                "company.name":"Blacksands Pacific"
+                            }
+                        },
+                        {
+                            "match_phrase": {
+                                "pba.id":"PAL006044"
+                            }
+                        }
+                        ]
+                    }
+                }
+            }
+            console.log(searchQuery);
+            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+                function successCallback(response){
+                    return response.data.hits.hits[0]._source;
             });
         }
 
