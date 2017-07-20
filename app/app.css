@@ -1,0 +1,31 @@
+.uppercase {
+  text-transform: uppercase;
+}
+
+.exxon-gray {
+  color: darkgrey;
+}
+
+.abbrev {
+  font-weight: 400;
+}
+
+.align-bottom {
+  align-items: baseline;
+}
+
+.align-top {
+  align-items: baseline;
+}
+
+body, html {
+  height: auto !important;
+}
+
+.text-area {
+  outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  width: 100%
+}
