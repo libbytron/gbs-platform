@@ -13,7 +13,7 @@
 
       $urlRouterProvider.otherwise('/');
 
-      $stateProvider      
+      $stateProvider
         .state('home', {
           url: '/home',
           templateUrl: '/home/index.html',
@@ -27,6 +27,11 @@
           templateUrl: '/pba-index/pba-index.html',
           controller: 'pba-index-controller'
         })
+        .state('create-gbs', {
+          url: '/create-gbs',
+          templateUrl: '/create-gbs/create-gbs.html',
+          controller: 'create-gbs-controller'
+        })
         .state('owner-index', {
           url: '/owner-index',
           templateUrl: '/owner-index/owner-index.html',
@@ -39,13 +44,13 @@
         })
         .state('pbas', {
           url: '/pbas/:pbaId/name/:pbaName',
-          params: { 
+          params: {
             pbaId: "",
             pbaName: ""
           },
           templateUrl: 'pba-detail/pba-detail.html',
           controller: 'pba-detail-controller',
-        })    
+        })
         .state('test', {
           url: '/test',
           templateUrl: '/test/test.html',

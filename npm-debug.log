@@ -1,0 +1,110 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '—global',
+1 verbose cli   '—production',
+1 verbose cli   'windows-build-tools' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.0
+4 error arg Argument starts with non-ascii dash, this is probably invalid: [ '—global', '—production', 'windows-build-tools' ]
+5 silly loadCurrentTree Starting
+6 silly install loadCurrentTree
+7 silly install readLocalPackageData
+8 silly fetchPackageMetaData —global
+9 silly fetchPackageMetaData —production
+10 silly fetchPackageMetaData windows-build-tools
+11 silly fetchOtherPackageData —global
+12 silly cache add args [ '—global', null ]
+13 verbose cache add spec —global
+14 silly fetchOtherPackageData —production
+15 silly cache add args [ '—production', null ]
+16 verbose cache add spec —production
+17 silly fetchNamedPackageData windows-build-tools
+18 silly mapToRegistry name windows-build-tools
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry data Result {
+21 silly mapToRegistry   raw: 'windows-build-tools',
+21 silly mapToRegistry   scope: null,
+21 silly mapToRegistry   escapedName: 'windows-build-tools',
+21 silly mapToRegistry   name: 'windows-build-tools',
+21 silly mapToRegistry   rawSpec: '',
+21 silly mapToRegistry   spec: 'latest',
+21 silly mapToRegistry   type: 'tag' }
+22 silly mapToRegistry uri https://registry.npmjs.org/windows-build-tools
+23 silly cache add parsed spec Result {
+23 silly cache add   raw: '—global',
+23 silly cache add   scope: null,
+23 silly cache add   escapedName: null,
+23 silly cache add   name: null,
+23 silly cache add   rawSpec: '—global',
+23 silly cache add   spec: '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global',
+23 silly cache add   type: 'local' }
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: '—production',
+24 silly cache add   scope: null,
+24 silly cache add   escapedName: null,
+24 silly cache add   name: null,
+24 silly cache add   rawSpec: '—production',
+24 silly cache add   spec: '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—production',
+24 silly cache add   type: 'local' }
+25 error addLocal Could not install /Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global
+26 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global'
+26 silly fetchPackageMetaData     at Error (native)
+26 silly fetchPackageMetaData  error for —global { Error: ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global'
+26 silly fetchPackageMetaData     at Error (native)
+26 silly fetchPackageMetaData   errno: -2,
+26 silly fetchPackageMetaData   code: 'ENOENT',
+26 silly fetchPackageMetaData   syscall: 'open',
+26 silly fetchPackageMetaData   path: '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global' }
+27 error addLocal Could not install /Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—production
+28 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—production'
+28 silly fetchPackageMetaData     at Error (native)
+28 silly fetchPackageMetaData  error for —production { Error: ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—production'
+28 silly fetchPackageMetaData     at Error (native)
+28 silly fetchPackageMetaData   errno: -2,
+28 silly fetchPackageMetaData   code: 'ENOENT',
+28 silly fetchPackageMetaData   syscall: 'open',
+28 silly fetchPackageMetaData   path: '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—production' }
+29 verbose request uri https://registry.npmjs.org/windows-build-tools
+30 verbose request no auth needed
+31 info attempt registry request try #1 at 9:03:53 AM
+32 verbose request id 179f25c427bdb37b
+33 verbose etag W/"59682d23-1010d"
+34 verbose lastModified Fri, 14 Jul 2017 02:32:03 GMT
+35 http request GET https://registry.npmjs.org/windows-build-tools
+36 info retry will retry, error on last attempt: TypeError: The header content contains invalid characters
+37 info attempt registry request try #2 at 9:04:03 AM
+38 verbose etag W/"59682d23-1010d"
+39 verbose lastModified Fri, 14 Jul 2017 02:32:03 GMT
+40 http request GET https://registry.npmjs.org/windows-build-tools
+41 info retry will retry, error on last attempt: TypeError: The header content contains invalid characters
+42 info attempt registry request try #3 at 9:05:03 AM
+43 verbose etag W/"59682d23-1010d"
+44 verbose lastModified Fri, 14 Jul 2017 02:32:03 GMT
+45 http request GET https://registry.npmjs.org/windows-build-tools
+46 silly get cb [ 304, undefined ]
+47 verbose etag https://registry.npmjs.org/windows-build-tools from cache
+48 verbose get saving windows-build-tools to /Users/aliciawilkin/.npm/registry.npmjs.org/windows-build-tools/.cache.json
+49 verbose correctMkdir /Users/aliciawilkin/.npm correctMkdir not in flight; initializing
+50 silly rollbackFailedOptional Starting
+51 silly rollbackFailedOptional Finishing
+52 silly runTopLevelLifecycles Finishing
+53 silly install printInstalled
+54 verbose stack Error: ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global'
+54 verbose stack     at Error (native)
+55 verbose cwd /Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform
+56 error Darwin 16.6.0
+57 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "—global" "—production" "windows-build-tools"
+58 error node v6.10.0
+59 error npm  v3.10.10
+60 error path /Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global
+61 error code ENOENT
+62 error errno -2
+63 error syscall open
+64 error enoent ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global'
+65 error enoent ENOENT: no such file or directory, open '/Users/aliciawilkin/Desktop/chaincode/chaincode/gbs-platform/—global'
+65 error enoent This is most likely not a problem with npm itself
+65 error enoent and is related to npm not being able to find a file.
+66 verbose exit [ -2, true ]
