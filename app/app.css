@@ -34,3 +34,7 @@ body, html {
   display: flex;
   flex-direction: column;
 }
+
+.date-picker {
+  color: #0C69B0;
+}
