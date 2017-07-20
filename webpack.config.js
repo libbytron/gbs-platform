@@ -21,23 +21,16 @@ module.exports = {
       { from: './pba-index', to: "pba-index" },
       { from: './services', to: "services" },
       { from: './test', to: "test" },
-      { from: './unity-1.1.1', to: "unity-1.1.1" },
       { from: './app.css', to: "app.css" },
       { from: './app.module.js', to: "app.module.js" },
     ])
   ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      }
-    ],
+    module: {
     loaders: [
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
-      },
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        },
       { test: /\.json$/, use: 'json-loader' },
       {
         test: /\.js$/,
@@ -45,9 +38,17 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015'],
-          plugins: ['transform-runtime'],
+          plugins: ['transform-runtime']
         }
-      }
+      },
+      {
+          test: /\.(eot|ttf|woff|woff2)$/,
+          loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+          test: /\.svg$/,
+          loader: 'file-loader?name=images/[name].[ext]'
+      },
     ]
   }
 }
