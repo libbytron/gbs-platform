@@ -46,3 +46,7 @@ body, html {
   padding: 0 0;
   margin: 0;
 }
+
+.date-picker {
+  color: #0C69B0;
+}
