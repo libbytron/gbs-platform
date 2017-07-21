@@ -2,8 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('testController', ['$scope', '$survey', '$elasticsearch', '$blockchain',
-        function($scope, $survey, $elasticsearch, $blockchain){
+        .controller('testController', ['$scope', '$survey', '$elasticsearch', '$blockchain', '$mdDialog', '$state',
+        function($scope, $survey, $elasticsearch, $blockchain, $mdDialog, $state){
+
 
             // Language selection tools:
             $scope.contactList = [];
@@ -35,6 +36,18 @@
             // daniela and controller form
             this.$onInit = function() {
                 $blockchain.subscribe(this);
+            }
+
+
+            $scope.anAllocationAddress;
+            $scope.anAllocation;
+            $scope.getAnAllocation = function(){
+                $blockchain.getAllocation($scope.anAllocationAddress)
+                    .then(function(allocation){
+                        $scope.anAllocation = allocation;
+                        $scope.$apply();
+                })
+
             }
 
             this.notifyNewAllocation = function(allocationAddress){
@@ -226,6 +239,19 @@
 
 
                 $survey.submitSurveyResponse(surveyResponse);
+            }
+
+            $scope.showDialog = function(){
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('This is an alert title')
+                        .textContent('You can specify some description text in here.')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('Got it!')
+                    );
+                $state.go($state.current.name, {}, {reload: true})
             }
 
         }]);

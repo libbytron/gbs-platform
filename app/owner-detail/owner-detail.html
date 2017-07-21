@@ -8,135 +8,155 @@
 <body>
   <main role="main">
     <div class="em-l-container">
-      <div class="em-c-page-header ">
-        <div class="em-u-display-flex align-bottom">
-          <h1>{{owner.name}}</h1>
-          <h2 class="exxon-gray abbrev em-u-padding-left">({{owner.abbreviation}})</h2>
-          <h3 class="exxon-gray em-u-padding-left">#{{owner.id}}</h3>
-        </div>
-        <div class="em-u-display-flex em-u-margin-bottom-double align-top">
-          <div>
-            <ul>
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
-                  Contact:
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
-                  {{owner.contact.name}}
-                </div>
-              </li>
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
-                  <!-- Telephone: -->
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
-                  {{owner.contact.telephone}}
-                </div>
-              </li>
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
-                  <!-- Email: -->
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
-                  {{owner.contact.email}}
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
 
-            <ul class="em-c-definition-list">
-              <!-- <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                  Abbreviation:
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                  {{owner.abbreviation}}
-                </div>
-              </li> -->
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                  Location:
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                  <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                    {{owner.address.street}}
-                  </p>
-                  <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                      {{owner.address.city}}, {{owner.address.state}} {{owner.address.zip}}
-                  </p>
-                  <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                      {{pba.company.address.country}}
-                  </p>
-                </div>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-            </div>
-
-            <!-- end em-c-page-header -->
-            <!-- <div class="pba-table-block"> -->
-              <div class="em-c-table-object ">
-                <div class="em-c-table-object__body" style="height:700px;overflow:auto;">
-                  <div class="em-c-table-object__body-inner">
-                    <table class="em-c-table em-u-margin-bottom-double">
-                      <thead class="em-c-table__header">
-                        <tr class="em-c-table__header-row">
-                          <th scope="col" class="em-c-table__header-cell ">operating pbas</th>
-                        </tr>
-                      </thead>
-                      <!-- end em-c-table__header -->
-                      <tbody>
-                        <tr ng-repeat="pba in pbaList" class="em-c-table__row ">
-                          <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:pba.id, pbaName:pba.name })">
-                            {{pba.id}}  {{pba.name}}
-                          </td>
-                        </tr>
-                        <!-- end em-c-table__row -->
-                      </tbody>
-                      <!-- end em-c-table__body -->
-                    </table>
-                    <!--end em-c-table-->
-                    <table class="em-c-table ">
-                      <thead class="em-c-table__header">
-                        <tr class="em-c-table__header-row">
-                          <th scope="col" class="em-c-table__header-cell ">PBA ownership</th>
-                          <th scope="col" class="em-c-table__header-cell ">% working interest</th>
-                        </tr>
-                        <!-- <em-c-></em-c->table__header-row -->
-                      </thead>
-                      <!-- end em-c-table__header -->
-                      <tbody>
-                          <tr ng-repeat="contract in contractList" class="em-c-table__row ">
-                              <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:contract.pba.id, pbaName:contract.pba.name })">
-                                  {{contract.pba.id}} {{contract.pba.name}}
-                              </td>
-                              <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:contract.pba.id, pbaName:contract.pba.name })">
-                                {{contract.percentWorkingInterest}}
-                              </td>
-                          </tr>
-                          <!-- end em-c-table__row -->
-                      </tbody>
-                      <!-- end em-c-table__body -->
-                    </table>
-                    <!--end em-c-table-->
-                  </div>
-                  <!--end em-c-table-object__body-inner-->
-                </div>
-                <!--end em-c-table-object__body -->
+      <table>
+        <tr>
+          <td>
+            <div class="em-c-page-header ">
+              <div class="em-u-display-flex align-bottom">
+                <h1>{{owner.name}}</h1>
+                <h2 class="exxon-gray abbrev em-u-padding-left">({{owner.abbreviation}})</h2>
+                <h3 class="exxon-gray em-u-padding-left">#{{owner.id}}</h3>
               </div>
-            <!--end em-c-table-object-->
+              <div class="em-u-display-flex em-u-margin-bottom-double align-top">
+                <div>
+                  <ul>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
+                        Contact:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
+                        {{owner.contact.name}}
+                      </div>
+                    </li>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
+                        <!-- Telephone: -->
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
+                        {{owner.contact.telephone}}
+                      </div>
+                    </li>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none em-u-padding-top-none">
+                        <!-- Email: -->
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none em-u-padding-top-none">
+                        {{owner.contact.email}}
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+
+                  <ul class="em-c-definition-list">
+                    <!-- <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Abbreviation:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        {{owner.abbreviation}}
+                      </div>
+                    </li> -->
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Location:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{owner.address.street}}
+                        </p>
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{owner.address.city}}, {{owner.address.state}} {{owner.address.zip}}
+                        </p>
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{pba.company.address.country}}
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <md-card>
+              <md-card-title>
+                <h3>Company Balance</h3>
+              </md-card-title>
+              <md-card-content>
+                <br>
+                Balance: ${{balance}}
+                <br>
+              </md-card-content>
+            </md-card>
+          </td>
+
+        </tr>
+      </table>
+
+
+      <!-- end em-c-page-header -->
+      <!-- <div class="pba-table-block"> -->
+      <div class="em-c-table-object ">
+        <div class="em-c-table-object__body">
+          <div class="em-c-table-object__body-inner">
+            <table class="em-c-table em-u-margin-bottom-double">
+              <thead class="em-c-table__header">
+                <tr class="em-c-table__header-row">
+                  <th scope="col" class="em-c-table__header-cell ">operating pbas</th>
+                </tr>
+              </thead>
+              <!-- end em-c-table__header -->
+              <tbody>
+                <tr ng-repeat="pba in pbaList" class="em-c-table__row ">
+                  <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:pba.id, pbaName:pba.name })">
+                    {{pba.id}} {{pba.name}}
+                  </td>
+                </tr>
+                <!-- end em-c-table__row -->
+              </tbody>
+              <!-- end em-c-table__body -->
+            </table>
+            <!--end em-c-table-->
+            <table class="em-c-table ">
+              <thead class="em-c-table__header">
+                <tr class="em-c-table__header-row">
+                  <th scope="col" class="em-c-table__header-cell ">PBA ownership</th>
+                  <th scope="col" class="em-c-table__header-cell ">% working interest</th>
+                </tr>
+                <!-- <em-c-></em-c->table__header-row -->
+              </thead>
+              <!-- end em-c-table__header -->
+              <tbody>
+                <tr ng-repeat="contract in contractList" class="em-c-table__row ">
+                  <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:contract.pba.id, pbaName:contract.pba.name })">
+                    {{contract.pba.id}} {{contract.pba.name}}
+                  </td>
+                  <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="pbas({ pbaId:contract.pba.id, pbaName:contract.pba.name })">
+                    {{contract.percentWorkingInterest}}
+                  </td>
+                </tr>
+                <!-- end em-c-table__row -->
+              </tbody>
+              <!-- end em-c-table__body -->
+            </table>
+            <!--end em-c-table-->
           </div>
-          <!-- end pba table em-l-container -->
-        </main>
-        <emfooter></emfooter>
+          <!--end em-c-table-object__body-inner-->
+        </div>
+        <!--end em-c-table-object__body -->
+      </div>
+      <!--end em-c-table-object-->
+    </div>
+    <!-- end pba table em-l-container -->
+  </main>
+  <emfooter></emfooter>
 
-        <!-- Add unity JavaScript to bottom of body -->
-        <script type="text/javascript" src="/unity-1.1.1/js/em-unity-1.1.1.min.js"></script>
+  <!-- Add unity JavaScript to bottom of body -->
+  <script type="text/javascript" src="/unity-1.1.1/js/em-unity-1.1.1.min.js"></script>
 
-      </body>
+</body>
 
-      </html>
+</html>

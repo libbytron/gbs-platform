@@ -3,6 +3,23 @@
     <body>
 
       <div ng-controller="testController">
+
+            <md-input-container>
+                          <label>Allocation Address</label>
+                          <textarea ng-model="anAllocationAddress"></textarea>
+            </md-input-container> <br>
+
+            <md-button ng-click="getAnAllocation()" class="md-raised" md-theme="default">
+                    Get This Allocation
+            </md-button>
+
+            <br>
+            {{anAllocation}}
+
+
+
+
+            <br><br><br><br>
           <center>
 
                     <form name="nameform">
@@ -130,6 +147,11 @@
               <br>
               <md-button ng-click="setBalance()" class="md-raised" md-theme="default">
                     Set Balance
+              </md-button>
+
+              <br><br>
+              <md-button ng-click="showDialog()" class="md-raised" md-theme="default">
+                    show dialog
               </md-button>
 
 

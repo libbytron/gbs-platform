@@ -28,10 +28,15 @@
             addContract: addContract,
             getAllContracts: getAllContracts,
             getContractsBelongingToCompany: getContractsBelongingToCompany,
+            getContractsBelongingToPba: getContractsBelongingToPba,
             addGasCollection: addGasCollection,
             getAllGasCollections: getAllGasCollections,
             getCompanyIdFromContract: getCompanyIdFromContract,
-            getContractFromPbaAndCompany: getContractFromPbaAndCompany
+            getContractFromPbaAndCompany: getContractFromPbaAndCompany,
+            addAllocationEntry: addAllocationEntry,
+            getAllocationsBelongingToPBA: getAllocationsBelongingToPBA,
+            getContractById: getContractById,
+            deleteAllocationEntry: deleteAllocationEntry
         };
 
         return exports;
@@ -60,6 +65,13 @@
 
         function addAddress(address){
             $http.post(elasticsearchURL + '/addresses/address', address).then(
+                function successCallback(data){
+                    console.log(data);
+                });
+        }
+
+        function addAllocationEntry(entry){
+            $http.post(elasticsearchURL + '/allocations/allocation', entry).then(
                 function successCallback(data){
                     console.log(data);
                 });
@@ -176,7 +188,6 @@
                     }
                 }
             }
-            console.log(searchQuery);
             return $http.post(elasticsearchURL + '/pbas/pba/_search', searchQuery).then(
                 function successCallback(response){
                     return response.data.hits.hits[0]._source;
@@ -218,6 +229,35 @@
             });
         }
 
+        function getContractsBelongingToPba(pbaId){
+            var searchQuery = {
+                query: {
+                    match: {
+                        "pba.id": pbaId
+                    }
+                }
+            }
+            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+                function successCallback(response){
+                    return convertHitsToSource(response.data.hits.hits);
+            });
+        }
+
+
+        function getContractById(contractId){
+            var searchQuery = {
+                query: {
+                    match: {
+                        "id": contractId
+                    }
+                }
+            }
+            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+                function successCallback(response){
+                    return response.data.hits.hits[0]._source;
+            });
+        }
+
         function getCompanyIdFromContract(contractId){
             var searchQuery = {
                 query: {
@@ -240,21 +280,21 @@
                         "must": [
                         {
                             "match_phrase": {
-                                "company.name":"Blacksands Pacific"
+                                "company.name": companyName
                             }
                         },
                         {
                             "match_phrase": {
-                                "pba.id":"PAL006044"
+                                "pba.id": pbaId
                             }
                         }
                         ]
                     }
                 }
             }
-            console.log(searchQuery);
             return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
                 function successCallback(response){
+                    console.log(response);
                     return response.data.hits.hits[0]._source;
             });
         }
@@ -264,6 +304,46 @@
                 function successCallback(response){
                     return convertHitsToSource(response.data.hits.hits);
                 });
+        }
+
+        function getAllocationsBelongingToPBA(pbaId){
+            var searchQuery = {
+                query: {
+                    match: {
+                        "pbaId": pbaId
+                    }
+                }
+            }
+            return $http.post(elasticsearchURL + '/allocations/allocation/_search', searchQuery).then(
+                function successCallback(response){
+                    return convertHitsToSource(response.data.hits.hits);
+            });
+        }
+
+        function deleteAllocationEntry(pbaId, date){
+            var searchQuery = {
+            "query" : {
+                    "bool": {
+                        "must": [
+                        {
+                            "match_phrase": {
+                                "pbaId":pbaId
+                            }
+                        },
+                        {
+                            "match_phrase": {
+                                "date":date
+                            }
+                        }
+                        ]
+                    }
+                }
+            }
+            return $http.post(elasticsearchURL + '/allocations/_delete_by_query', searchQuery).then(
+                function successCallback(response){
+                    console.log(response);
+                    return response;
+            });    
         }
     }
 

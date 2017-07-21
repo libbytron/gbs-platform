@@ -39,9 +39,10 @@
   <script src="blockchain/blockchain.controller.js"></script>
   <script src="owner-detail/owner-detail.controller.js"></script>
   <script src="pba-detail/pba-detail.controller.js"></script>
+  <script src="create-gbs/create-gbs.controller.js"></script>
   <script src="navagation-bar/navagation-bar.controller.js"></script>
   <script src="footer/footer.controller.js"></script>
-  
+
   <!-- Services -->
   <script src="services/survey.service.js"></script>
   <script src="services/blockchain.service.js"></script>
@@ -61,17 +62,17 @@
 
   <div id="main">
     <div ui-view>
-    
+
     <center>
-    
-    <h1>Tell me about yourself!</h1>
-    
+
+    <h1>Welcome to GBS-Platform!</h1>
+
     <md-button class="md-raised" ui-sref="test" md-theme="default">
-       Info Form
+       Test
     </md-button>
 
-    <md-button class="md-raised" ui-sref="blockchain" md-theme="default">
-       Blockchain
+    <md-button class="md-raised" ui-sref="create-gbs" md-theme="default">
+       Create GBS Entry
     </md-button>
 
     <md-button class="md-raised" ui-sref="pba-index" md-theme="default">
@@ -81,9 +82,9 @@
     <md-button class="md-raised" ui-sref="owner-index" md-theme="default">
        Owner Index
     </md-button>
-    
+
     </center>
-    
+
     </div>
   </div>
 

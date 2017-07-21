@@ -8,120 +8,165 @@
 <body>
   <main role="main">
     <div class="em-l-container">
-      <div class="em-c-page-header em-u-margin-bottom-double">
-        <h1>{{pba.id}}  {{pba.name}}</h1>
-        <div class="em-u-display-flex date-picker em-u-margin-bottom">
-          <svg class="em-c-icon em-c-icon--large">
-            <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../unity-1.1.1/images/em-icons.svg#icon-calendar"></use>
-          </svg>
-          <!-- HARD CODED fix dates to pull from somewhere -->
-          <h3 class="em-u-padding-left fpo-block">07/01/2017 - 07/31/2017 </h3>
-        </div>
-
-        <div class="em-u-display-flex">
-          <div>
-            <ul class="em-c-definition-list">
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                  Product:
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                  {{pba.productType}}
-                </div>
-              </li>
-              <li class="em-c-definition-list__item">
-                <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                  Operator:
-                </div>
-                <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                  <p class="em-u-margin-bottom-none em-u-padding-top-none uppercase">
-                    {{pba.company.name}} </p>
-                    <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                      {{pba.company.address.street}} </p>
-                    <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                      {{pba.company.address.city}}, {{pba.company.address.state}} {{pba.company.address.zip}} </p>
-                    <p class="em-u-margin-bottom-none em-u-padding-top-none">
-                      {{pba.company.address.country}} </p>
-                    </div>
-                  </li>
-                </ul>
+      <table>
+        <tr>
+          <td>
+            <div class="em-c-page-header em-u-margin-bottom-double">
+              <h1>{{pba.id}} {{pba.name}}</h1>
+              <div class="em-u-display-flex date-picker em-u-margin-bottom">
+                <svg class="em-c-icon em-c-icon--large">
+                  <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../unity-1.1.1/images/em-icons.svg#icon-calendar"></use>
+                </svg>
+                <!-- HARD CODED fix dates to pull from somewhere -->
+                <h3 class="em-u-padding-left fpo-block">07/01/2017 - 07/31/2017 </h3>
               </div>
-              <div>
-                <ul>
-                  <li class="em-c-definition-list__item">
-                    <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                      Balancing Units:
-                    </div>
-                    <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                      MCF @ {{pba.balancingUnits}}
-                    </div>
-                  </li>
-                  <li class="em-c-definition-list__item">
-                    <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
-                      Location:
-                    </div>
-                    <div class="em-c-definition-list__value em-u-padding-bottom-none">
-                      {{pba.address.city}}, {{pba.address.state}}
-                    </div>
-                  </li>
-                </ul>
+
+              <div class="em-u-display-flex">
+                <div>
+                  <ul class="em-c-definition-list">
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Product:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        {{pba.productType}}
+                      </div>
+                    </li>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Operator:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none uppercase">
+                          {{pba.company.name}} </p>
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{pba.company.address.street}} </p>
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{pba.company.address.city}}, {{pba.company.address.state}} {{pba.company.address.zip}} </p>
+                        <p class="em-u-margin-bottom-none em-u-padding-top-none">
+                          {{pba.company.address.country}} </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Balancing Units:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        MCF @ {{pba.balancingUnits}}
+                      </div>
+                    </li>
+                    <li class="em-c-definition-list__item">
+                      <div class="em-c-definition-list__key em-u-text-align-right em-u-padding-bottom-none">
+                        Location:
+                      </div>
+                      <div class="em-c-definition-list__value em-u-padding-bottom-none">
+                        {{pba.address.city}}, {{pba.address.state}}
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          </td>
+          <td>
+            <md-card>
+              <md-card-title>
+                <h3>Owners</h3>
+              </md-card-title>
+              <md-card-content>
+                <table>
+                  <thead>
+                      <tr class="em-c-table__header-row">
+                        <th scope="col">Owner</th>
+                        <th scope="col">% Working Interest</th>
+                      </tr>
+                      <!-- <em-c-></em-c->table__header-row -->
+                  </thead>
+                  <tr ng-repeat="contract in contractList" class="em-c-table__row ">
+                    <td colspan="" ui-sref="owners({ownerId: contract.company.id })">
+                      {{contract.company.name}}
+                    </td>
+                    <td colspan="" ui-sref="owners({ownerId: contract.company.id })">
+                      {{contract.percentWorkingInterest}}
+                    </td>
+                  </tr>
+                </table>
+              </md-card-content>
+            </md-card>
+          </td>
+        </tr>
+      </table>
       <!-- end em-c-page-header -->
       <div class="pba-table-block">
         <div class="em-c-table-object ">
-          <div class="em-c-table-object__body" style="height:500px;overflow:auto;">
+          <div class="em-c-table-object__body">
             <div class="em-c-table-object__body-inner">
               <table class="em-c-table ">
                 <thead class="em-c-table__header">
                   <tr class="em-c-table__header-row">
                     <th scope="col" class="em-c-table__header-cell em-u-text-align-left">
-                      wio
+                      Company Name
                     </th>
                     <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
-                      Current mo. entitlement
+                      Date
                     </th>
                     <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
-                      current mo. actuals
+                      Entitlement
                     </th>
                     <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
-                      adjustment
+                      Actual
                     </th>
                     <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
-                      current balance
+                      Adjustment
+                    </th>
+                    <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
+                      Previous Balance
+                    </th>
+                    <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
+                      Current Balance
+                    </th>
+                    <th scope="col" class="em-c-table__header-cell em-u-text-align-right">
+
                     </th>
                   </tr>
                   <!-- <em-c-></em-c->table__header-row -->
                 </thead>
                 <!-- end em-c-table__header -->
                 <tbody>
-                  <tr class="em-c-table__row em-u-text-align-right">
+                  <tr class="em-c-table__row em-u-text-align-right" ng-repeat="allocation in gbs">
                     <td class="em-c-table__cell em-js-cell em-js-cell-editable em-u-text-align-left" colspan="">
-                      Sally Sample
+                      {{allocation.companyName}}
                     </td>
                     <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
-                      Sally Sample
+                      {{allocation.date.toDateString()}}
                     </td>
                     <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
-                      Sally Sample
+                      {{allocation.entitlement}}
                     </td>
                     <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
-                      Sally Sample
+                      {{allocation.actual}}
                     </td>
                     <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
-                      Sally Sample
+                      {{allocation.overshort}}
+                    </td>
+                    <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
+                      {{allocation.previousBalance}}
+                    </td>
+                    <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
+                      {{allocation.currentBalance}}
+                    </td>
+                    <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="">
+
+                      <md-button class="md-small" style="min-height:20px" ng-click="deleteAllocationEntry(allocation.pbaId, allocation.dateAsString)">
+                        <i class="material-icons">delete_forever</i>
+                      </md-button>
+
                     </td>
                   </tr>
-
-                  <tr ng-repeat="allocation in allocationList" class="em-c-table__row ">
-
-                    <td class="em-c-table__cell em-js-cell em-js-cell-editable" colspan="" ui-sref="owners({ownerId: company.id })">
-
-                    </td>
-                    <!-- <td>need to query back to find all contracts associated with this PBA</td> -->
-                  </tr>
-                  <!-- end em-c-table__row -->
                 </tbody>
                 <!-- end em-c-table__body -->
               </table>

@@ -60,7 +60,6 @@
 
         function getBalance(companyId){
             return companyBalanceContract.getBalance(companyId).then(function(balance){
-                console.log(balance.toNumber());
                 return balance.toNumber();
             });
         }
@@ -71,6 +70,7 @@
                 balance,
                 {from: coinbaseAddress, gas: calculateMaxGas(coinbaseAddress)}
             ).then(function(result){
+                notifyAllNewEntry();
                 return getBalance(companyId);
             })
         }
@@ -100,6 +100,12 @@
         function notifyAllNewAllocation(allocationAddress){
             subscribers.forEach(function(subscriber){
                 subscriber.notifyNewAllocation(allocationAddress);
+            });
+        }
+
+        function notifyAllNewEntry(){
+            subscribers.forEach(function(subscriber){
+                subscriber.notifyNewEntry();
             });
         }
     }
