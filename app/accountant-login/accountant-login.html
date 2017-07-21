@@ -1,0 +1,55 @@
+<body>
+
+  <toolbar></toolbar>
+
+  <div id="main">
+    <div ui-view>
+
+    <center>
+    <br><br>
+      <h1> GBS Platform </h1><br>
+      <h5> Hosted by ExxonMobil </h5>
+    <br><br>
+    </center>
+
+      <md-card style="width:900px;margin-right: auto;margin-left: auto;">
+        <md-toolbar style="background-color: blue;">
+          <div class="md-toolbar-tools">
+            <h2><span>Accountant Login</h2>
+          </div>
+        </md-toolbar>
+        <md-card-content>
+        <div>
+          <md-input-container style="width:100%;">
+            <label>Email</label>
+            <input type="text" class="text-area" ng-model="email">
+          </md-input-container>
+        </div>
+        <div>
+          <md-input-container style="width:100%;">
+            <label>Password</label>
+            <input type="password" class="text-area" ng-model="password">
+          </md-input-container>
+        </div>
+
+        <center>
+        <md-button style="background-color: blue;" ui-sref="create-gbs" class="md-raised md-primary">
+            Login
+        </md-button>
+        </center>
+        </md-card-content>
+      </md-card>
+
+      <br><br>
+      <center>
+        <h6> Supported by Etherium</h6><br>
+        <IMG HEIGHT=5% WIDTH=5% SRC="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXVXF5JqugayO9JqdGni8RYYT57b6By0pAy5xzmZnwlQ7DpTgo">
+      </center>
+      <br><br>
+
+
+
+    </div>
+  </div>
+
+</body>

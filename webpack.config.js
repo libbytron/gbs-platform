@@ -24,6 +24,7 @@ module.exports = {
       { from: './test', to: "test" },
       { from: './app.css', to: "app.css" },
       { from: './app.module.js', to: "app.module.js" },
+      { from: './accountant-login', to: "accountant-login" },
       { from: './create-gbs', to: "create-gbs" }
     ])
   ],

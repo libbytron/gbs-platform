@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app')
-        .controller('pba-detail-controller', ['$scope', '$elasticsearch', '$stateParams', '$blockchain', '$state',
-        function($scope, $elasticsearch, $stateParams, $blockchain, $state){
+        .controller('pba-detail-controller', ['$scope', '$elasticsearch', '$stateParams', '$blockchain', '$state', '$rootScope',
+        function($scope, $elasticsearch, $stateParams, $blockchain, $state, $rootScope){
 
             $scope.pbaId = $stateParams.pbaId;
             $scope.pbaName = $stateParams.pbaName;
@@ -18,8 +18,6 @@
             $scope.numberOfAllocationsAdded = 0;
 
             this.$onInit = function() {
-                $blockchain.subscribe(this);
-
                 $elasticsearch.getPBAbyNameAndId($scope.pbaId, $scope.pbaName).then(
                      function(hit){
                          $scope.pba = hit;
@@ -41,14 +39,10 @@
                 )
             }
 
-            this.notifyNewAllocation = function(allocationAddress){
-                console.log("notify called");
-            }
-
-            this.notifyNewEntry = function(){
-                console.log("notifyNewEntryCalled");
-                $state.go($state.current.name, {}, {reload: true})
-            }
+            // new
+            $rootScope.$on('blockchain:balanceChanged', function(event) {
+                $state.go($state.current.name, {}, {reload: true});
+            });
 
             $scope.getAllocation = function(allocationInfo){
                 $blockchain.getAllocation(allocationInfo.address).then(

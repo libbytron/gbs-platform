@@ -35,7 +35,7 @@
 
             // daniela and controller form
             this.$onInit = function() {
-                $blockchain.subscribe(this);
+                //$blockchain.subscribe(this);
             }
 
 

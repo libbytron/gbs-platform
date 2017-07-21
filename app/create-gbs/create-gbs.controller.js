@@ -18,7 +18,6 @@
             $scope.contract;
 
             this.$onInit = function() {
-                $blockchain.subscribe(this);
             }
 
             $scope.submit = function(){
@@ -47,7 +46,8 @@
                 )                
             }
 
-            this.notifyNewAllocation = function(allocationAddress){
+            // new
+            $scope.$on('blockchain:newAllocation', function(event,allocationAddress){
                 $mdDialog.show({
                     templateUrl: '/create-gbs/loading-balance-dialog.html',
                     parent: angular.element(document.body),
@@ -65,10 +65,11 @@
                                 $scope.$apply();
                             }
                         )
-                    })
-            }
+                    })             
+            });
 
-            this.notifyNewEntry = function(){
+            // new
+            $scope.$on('blockchain:balanceChanged', function(event) {
                 console.log("notifyNewEntryCalled");
                 $mdDialog.show(
                     $mdDialog.alert()
@@ -81,8 +82,8 @@
                     ).then(function(result){
                         $state.go($state.current.name, {}, {reload: true})
                     })
-            }
-
+            });
+            
             $scope.recordAllocationInDatabase = function(allocationAddress){
                 $blockchain.getAllocation(allocationAddress).then(
                     function(allocation){

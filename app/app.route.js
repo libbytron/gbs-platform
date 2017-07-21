@@ -22,6 +22,7 @@ import company_balance_contracts from '../build/contracts/CompanyBalance.json';
         .state('home', {
           url: '/home',
           templateUrl: '/index.html',
+          controller:'home-controller'
         })
         .state('blockchain', {
           url: '/blockchain',
@@ -31,6 +32,11 @@ import company_balance_contracts from '../build/contracts/CompanyBalance.json';
           url: '/pba-index',
           templateUrl: '/pba-index/pba-index.html',
           controller: 'pba-index-controller'
+        })
+        .state('accountant-login', {
+          url: '/accountant-login',
+          templateUrl: '/accountant-login/accountant-login.html',
+          controller: 'accountant-login-controller'
         })
         .state('create-gbs', {
           url: '/create-gbs',

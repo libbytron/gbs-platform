@@ -9,14 +9,11 @@
 
     function blockchainService($http, $rootScope){
 
-        var subscribers = [];
         var coinbaseAddress = "0xa4338dd633877a4a6aaaf28292ecf45f8eb8f94f";
         var companyBalanceContract = $rootScope.CompanyBalanceContract.at("0xad14a7532212812df63c4d9abf68a996825144d4");
 
         // list of service functions:
         var exports = {
-            subscribe: subscribe,
-            unsubscribe: unsubscribe,
             createAllocation: createAllocation,
             getAllocation: getAllocation,
             getBalance: getBalance,
@@ -35,7 +32,8 @@
                 previousBalance,
                 {from: coinbaseAddress, gas: calculateMaxGas(coinbaseAddress)}
             ).then(function(result){
-                notifyAllNewAllocation(result.address);
+                $rootScope.$emit('blockchain:newAllocation', result.address);
+                $rootScope.$broadcast('blockchain:newAllocation', result.address);
                 return result.address;
             })
         }
@@ -70,7 +68,8 @@
                 balance,
                 {from: coinbaseAddress, gas: calculateMaxGas(coinbaseAddress)}
             ).then(function(result){
-                notifyAllNewEntry();
+                $rootScope.$emit('blockchain:balanceChanged');
+                $rootScope.$broadcast('blockchain:balanceChanged');
                 return getBalance(companyId);
             })
         }
@@ -84,29 +83,6 @@
             } else {
                 return Math.floor((accBalance / $rootScope.web3.eth.gasPrice) * 0.95);
             }
-        }
-
-        function subscribe(subscriber){
-            subscribers.push(subscriber);
-        }
-
-        function unsubscribe(subscriber){
-            var indexToRemove = subscribers.indexOf(subscriber);
-            if(index > -1){
-                subscribers.splice(indexToRemove, 1);
-            }
-        }
-
-        function notifyAllNewAllocation(allocationAddress){
-            subscribers.forEach(function(subscriber){
-                subscriber.notifyNewAllocation(allocationAddress);
-            });
-        }
-
-        function notifyAllNewEntry(){
-            subscribers.forEach(function(subscriber){
-                subscriber.notifyNewEntry();
-            });
         }
     }
 
