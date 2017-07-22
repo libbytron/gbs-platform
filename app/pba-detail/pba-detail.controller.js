@@ -8,12 +8,16 @@
             $scope.pbaId = $stateParams.pbaId;
             $scope.pbaName = $stateParams.pbaName;
 
+            $scope.startDate = new Date("1/1/2000");
+            $scope.endDate = new Date;
+
             $scope.pba = {};
             $scope.owner = {};
             $scope.contractList = [];
 
             $scope.allocation;
             $scope.gbs = [];
+            $scope.gbsCopy = [];
             $scope.numberOfAllocations = 0;
             $scope.numberOfAllocationsAdded = 0;
 
@@ -44,6 +48,21 @@
                 $state.go($state.current.name, {}, {reload: true});
             });
 
+            $scope.filterDates = function(){
+                $scope.gbs = [];
+                for(var i = 0; i < $scope.gbsCopy.length; i++){
+                    console.log($scope.gbsCopy[i]);
+                    if($scope.gbsCopy[i].date >= $scope.startDate && $scope.gbsCopy[i].date <= $scope.endDate){
+                        $scope.gbs.push($scope.gbsCopy[i]);
+                    }
+                }
+                $scope.gbs.sort(function(a,b){
+                    if(a.companyId == b.companyId)
+                        return b.date - a.date;
+                    return a.companyId-b.companyId;    
+                });
+            }
+
             $scope.getAllocation = function(allocationInfo){
                 $blockchain.getAllocation(allocationInfo.address).then(
                     function(allocation){
@@ -68,17 +87,21 @@
                             currentBalance: allocation.currentBalance
                         }
                         $scope.gbs.push(gbsEntry);
+                        $scope.gbsCopy.push(gbsEntry);
                         $scope.numberOfAllocationsAdded++;
                         if($scope.numberOfAllocationsAdded == $scope.numberOfAllocations){
+                        {
                             $scope.gbs.sort(function(a,b){
                                 if(a.companyId == b.companyId)
                                     return b.date - a.date;
                                 return a.companyId-b.companyId;    
                             });
-                            /*
-                            $scope.gbs.sort(function(a,b){
+                            $scope.gbsCopy.sort(function(a,b){
+                                if(a.companyId == b.companyId)
                                     return b.date - a.date;
-                            })*/
+                                return a.companyId-b.companyId;    
+                            });
+                        }
                             
                         }
                     }

@@ -17,8 +17,8 @@
                 <svg class="em-c-icon em-c-icon--large">
                   <use xmlns:xlink="https://www.w3.org/1999/xlink" xlink:href="../unity-1.1.1/images/em-icons.svg#icon-calendar"></use>
                 </svg>
-                <!-- HARD CODED fix dates to pull from somewhere -->
-                <h3 class="em-u-padding-left fpo-block">07/01/2017 - 07/31/2017 </h3>
+                <md-datepicker ng-model="startDate" md-current-view="year" ng-change="filterDates()"></md-datepicker>
+                <md-datepicker ng-model="endDate" md-current-view="year" ng-change="filterDates()"></md-datepicker>
               </div>
 
               <div class="em-u-display-flex">

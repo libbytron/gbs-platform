@@ -223,7 +223,7 @@
                     }
                 }
             }
-            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+            return $http.post(elasticsearchURL + '/contracts/contract/_search?size=100', searchQuery).then(
                 function successCallback(response){
                     return convertHitsToSource(response.data.hits.hits);
             });
@@ -237,7 +237,7 @@
                     }
                 }
             }
-            return $http.post(elasticsearchURL + '/contracts/contract/_search', searchQuery).then(
+            return $http.post(elasticsearchURL + '/contracts/contract/_search?size=100', searchQuery).then(
                 function successCallback(response){
                     return convertHitsToSource(response.data.hits.hits);
             });
